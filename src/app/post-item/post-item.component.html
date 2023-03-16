@@ -1,0 +1,191 @@
+<<<<<<< HEAD
+<br />
+
+<section class="intro">
+  <div
+    class="bg-image-vertical h-100"
+    style="
+      background-image: url(https://mdbootstrap.com/img/Photos/new-templates/search-box/img1.jpg);
+      background-repeat: repeat;
+    "
+  >
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <div class="card" style="border-radius: 1rem">
+              <div class="card-body p-5">
+                <h1 class="mb-5 text-center">Ajouter un nouveau post</h1>
+
+                <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+                  <input
+                    type="hidden"
+                    name="_id"
+                    #_id="ngModel"
+                    [(ngModel)]="postService.selectedPost._id"
+                  />
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form6Example5">Titre</label>
+                    <input
+                      class="form-control"
+                      id="titreInput"
+                      type="text"
+                      name="titre"
+                      #name="ngModel"
+                      [(ngModel)]="postService.selectedPost.titre"
+                      placeholder="Article 1"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="contenu">Contenu </label>
+                    <textarea
+                      class="form-control"
+                      id="contenu"
+                      rows="6"
+                      name="contenu"
+                      #name="ngModel"
+                      [(ngModel)]="postService.selectedPost.contenu"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="rowbtn">
+                    <div class="input-field col s12">
+                      <button
+                        class="btn btn-danger"
+                        type="button"
+                        (click)="resetForm(postForm)"
+                      >
+                        Reset</button
+                      >&nbsp;
+                      <button
+                        class="btn btn-success"
+                        type="submit"
+                        [disabled]="postForm.invalid"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div
+                  class="card shadow-2-strong"
+                  style="background-color: #fcfdff"
+                >
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-borderless mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Contenu</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let po of postService.posts">
+                            <td>{{ po.titre }}</td>
+                            <td>{{ po.contenu }}</td>
+                            <td>
+                              <a class="action-btn" (click)="onEdit(po)">
+                                <fa-icon [icon]="faPenToSquare"></fa-icon>
+                              </a>
+                              &nbsp;
+                              <a
+                                class="action-btn"
+                                (click)="onDelete(po._id, postForm)"
+                              >
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+=======
+<br>
+<div class="container">
+     
+          <div class="card">
+            <div class="card-content bg-dark text-white">
+              <div class="card-body">
+                <div class="row">
+                <div class="col-4">
+                  <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="postService.selectedPost._id">
+                    <br><br>
+                    <div class="form-group">
+                        <label for="titreInput">Titre de post</label><br>
+                        <input class="form-control" id="titreInput" type="text" name="titre" #name="ngModel" [(ngModel)]="postService.selectedPost.titre" placeholder="Article 1" required>
+                      </div>
+                      <br><br>
+                    <div class="form-group">
+                        <label for="ContenuInput">Contenu de post</label>
+                        <textarea class="form-control" id="ContenuInput" rows="3" name="contenu" #name="ngModel" [(ngModel)]="postService.selectedPost.contenu" required></textarea>
+                      </div>
+                      <br><br>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <button class="btn btn-warning" type="button" (click)="resetForm(postForm)">Reset</button>&nbsp;
+                        <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <br>
+                <div class="col-8">
+                    <h2>Tableau de Posts</h2>
+                    <table class="table table-dark table-hover">
+                      <thead>
+                        <tr>
+                          <th>Titre</th>
+                          <th>Contenu</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let po of postService.posts">
+                          <td>{{po.titre}}</td>
+                          <td>{{po.contenu}}</td>
+                          <td>
+                            <a class="action-btn" (click)="onEdit(po)">
+                              <fa-icon [icon]="faPenToSquare"></fa-icon>
+                            </a>
+                            &nbsp;
+                            <a class="action-btn" (click)="onDelete(po._id,postForm)">
+                              <fa-icon [icon]="faTrash"></fa-icon>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+   
+              </div>
+            </div>
+            </div>
+          </div>
+      
+  </div>
+  <br><br><br><br><br>
+>>>>>>> f9b0a0191d1fe8de3cdb2c11f20bb3a771a49c7f
